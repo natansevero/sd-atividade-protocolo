@@ -37,14 +37,13 @@ public class Client {
         try (DatagramSocket socket = new DatagramSocket()) {
             
             byte[] data = convertter.marshal(message).getBytes();
-            System.out.println("DoOperation: " + new String(data));
+//            System.out.println("DoOperation: " + new String(data));
             
             InetAddress address = InetAddress.getByName(message.getRemoteRef().getHost());
             int port = Integer.parseInt(message.getRemoteRef().getPort());
             
             DatagramPacket packet = new DatagramPacket(data, data.length, address, port);
             socket.send(packet);
-            System.out.println("messagem enviada");
         
             // Crio o pacote de novo
             // recieve
